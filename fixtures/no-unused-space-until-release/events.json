@@ -1,0 +1,79 @@
+{
+  "policy": {
+    "capacity": 12,
+    "next_offset": 8,
+    "clock_bounds": {
+      "q/5": [
+        0,
+        0
+      ]
+    },
+    "rate_bound": {
+      "q": 2
+    },
+    "initial": [
+      {
+        "camera": "q",
+        "boot": 5,
+        "seq": 2,
+        "offset": 0,
+        "file": "base.bin",
+        "clock": 30,
+        "duration": 4
+      }
+    ]
+  },
+  "objects": {
+    "base.bin": {
+      "bytes": 8,
+      "sha256": "924592b9b103f14f833faafb67f480691f01988aa457c0061769f58cd47311bc"
+    },
+    "more.bin": {
+      "bytes": 6,
+      "sha256": "8829920baa578a546740437dc0e56671c749d93d6fbcfec2d9ecf3b30a87577b"
+    }
+  },
+  "events": [
+    {
+      "at": 34,
+      "action": "retain",
+      "id": "kept",
+      "camera": "q",
+      "span": [
+        30,
+        34
+      ],
+      "until": 40
+    },
+    {
+      "at": 35,
+      "action": "capture",
+      "camera": "q",
+      "boot": 5,
+      "seq": 3,
+      "clock": 34,
+      "duration": 3,
+      "file": "more.bin"
+    },
+    {
+      "at": 41,
+      "action": "capture",
+      "camera": "q",
+      "boot": 5,
+      "seq": 4,
+      "clock": 37,
+      "duration": 3,
+      "file": "more.bin"
+    },
+    {
+      "at": 42,
+      "action": "query",
+      "camera": "q",
+      "span": [
+        30,
+        40
+      ]
+    }
+  ],
+  "packets": []
+}

@@ -1,0 +1,195 @@
+{
+  "policy": {
+    "capacity": 24,
+    "next_offset": 20,
+    "clock_bounds": {
+      "p/1": [
+        0,
+        0
+      ],
+      "p/2": [
+        4,
+        6
+      ]
+    },
+    "rate_bound": {
+      "p": 2
+    },
+    "initial": [
+      {
+        "camera": "p",
+        "boot": 1,
+        "seq": 7,
+        "offset": 0,
+        "file": "old.bin",
+        "clock": 8,
+        "duration": 3
+      },
+      {
+        "camera": "p",
+        "boot": 1,
+        "seq": 8,
+        "offset": 8,
+        "file": "mid.bin",
+        "clock": 11,
+        "duration": 3
+      }
+    ]
+  },
+  "objects": {
+    "old.bin": {
+      "bytes": 8,
+      "sha256": "7bf52afd1d2eb936aaa7e54e67ae18b8fb24efb51e7edea259e6571b85614c96"
+    },
+    "mid.bin": {
+      "bytes": 8,
+      "sha256": "83e97c2804954f4b0f2e98b779d2a9d4a8a73bdbd7497771cbc08cdd37b1c9e2"
+    },
+    "on-edge.bin": {
+      "bytes": 6,
+      "sha256": "eac63e0a015bcf7d042d4483793205d661468e8f9608cb6d2e6158a0e893f8a8"
+    },
+    "first.bin": {
+      "bytes": 4,
+      "sha256": "4ef96202525aa62c3e5d1798cde8c7e3d9a81f0b04aadd9f4b299a330dcd6bb7"
+    },
+    "second.bin": {
+      "bytes": 2,
+      "sha256": "bee30e5b6d59c1bdf10100ef331706553fd3c4e6b0a342a092c6f6f733b8be36"
+    },
+    "boot2.bin": {
+      "bytes": 6,
+      "sha256": "25f49a1e79415a58b599d22a46ba0b22eb091abb8c1131b5719627ddc708d1f8"
+    },
+    "more.bin": {
+      "bytes": 4,
+      "sha256": "1b00481092925917a76933d05633881cb80fe65c8138fb1ff04296cf2503740e"
+    }
+  },
+  "events": [
+    {
+      "at": 14,
+      "action": "open",
+      "token": "v1",
+      "camera": "p",
+      "span": [
+        8,
+        11
+      ],
+      "until": 23
+    },
+    {
+      "at": 15,
+      "action": "retain",
+      "id": "h1",
+      "camera": "p",
+      "span": [
+        11,
+        18
+      ],
+      "until": 31
+    },
+    {
+      "at": 16,
+      "action": "retain",
+      "id": "h2",
+      "camera": "p",
+      "span": [
+        13,
+        19
+      ],
+      "until": 35
+    },
+    {
+      "at": 17,
+      "action": "capture",
+      "camera": "p",
+      "boot": 1,
+      "seq": 9,
+      "clock": 14,
+      "duration": 3,
+      "file": "on-edge.bin"
+    },
+    {
+      "at": 18,
+      "action": "close",
+      "token": "v1"
+    },
+    {
+      "at": 19,
+      "action": "capture",
+      "camera": "p",
+      "boot": 1,
+      "seq": 9,
+      "clock": 14,
+      "duration": 3,
+      "file": "on-edge.bin"
+    },
+    {
+      "at": 20,
+      "action": "power_loss",
+      "device": "ring"
+    },
+    {
+      "at": 21,
+      "action": "restart",
+      "device": "ring"
+    },
+    {
+      "at": 22,
+      "action": "capture",
+      "camera": "p",
+      "boot": 2,
+      "seq": 7,
+      "clock": 17,
+      "duration": 3,
+      "file": "boot2.bin"
+    },
+    {
+      "at": 24,
+      "action": "collect",
+      "id": "h1"
+    },
+    {
+      "at": 29,
+      "action": "collect",
+      "id": "h2"
+    },
+    {
+      "at": 37,
+      "action": "capture",
+      "camera": "p",
+      "boot": 2,
+      "seq": 8,
+      "clock": 31,
+      "duration": 2,
+      "file": "more.bin"
+    }
+  ],
+  "packets": [
+    {
+      "method": "PUT",
+      "path": "/ring/20",
+      "status": 200,
+      "reply": {
+        "state": "stored",
+        "written": 4
+      },
+      "body": "first.bin",
+      "drop": false,
+      "lag_ms": 0
+    },
+    {
+      "method": "PUT",
+      "path": "/ring/0",
+      "status": 200,
+      "reply": {
+        "state": "partial",
+        "written": 1
+      },
+      "body": "second.bin",
+      "drop": true,
+      "lag_ms": 0
+    }
+  ]
+}
